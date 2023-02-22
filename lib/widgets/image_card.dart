@@ -4,13 +4,14 @@ class ImageCard extends StatelessWidget {
   final bool selected;
   final bool focus;
   final String image;
-
-  const ImageCard({
-    Key? key,
-    required this.selected,
-    required this.image,
-    required this.focus,
-  }) : super(key: key);
+  final String label;
+  const ImageCard(
+      {Key? key,
+      required this.selected,
+      required this.image,
+      required this.focus,
+      required this.label})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +29,33 @@ class ImageCard extends StatelessWidget {
         },
         child: Card(
           color: Colors.black,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: focus ? Colors.white : Colors.black,
-              border: Border.all(
-                color: focus ? Colors.white : Colors.black,
-                width: 2,
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: focus ? Colors.white : Colors.black,
+                    border: Border.all(
+                      color: focus ? Colors.white : Colors.black,
+                      width: 2,
+                    ),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          image,
+                        ),
+                        fit: BoxFit.cover),
+                  ),
+                ),
               ),
-              image: DecorationImage(
-                  image: NetworkImage(image), fit: BoxFit.cover),
-            ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                label,
+                style: TextStyle(color: Colors.white),
+              )
+            ],
           ),
         ),
       ),

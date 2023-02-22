@@ -15,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int? selectedIndex;
   int? onFocusIndex;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(20),
         itemCount: images.length,
         itemBuilder: (ctx, i) {
-          final image = images[i];
           return DpadContainer(
             onClick: () => setState(() => selectedIndex = i),
             onFocus: (bool isFocused) => setState(() => onFocusIndex = i),
             child: ImageCard(
-              image: image,
+              image: images[i].image,
+              label: images[i].label,
               focus: onFocusIndex == i,
               selected: selectedIndex == i,
             ),
