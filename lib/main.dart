@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:test/routes.dart';
-import 'package:test/screens/home_screen.dart';
 import 'package:test/screens/login_screen.dart';
 
 void main() {
